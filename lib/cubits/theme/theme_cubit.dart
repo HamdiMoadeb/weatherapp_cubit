@@ -11,14 +11,17 @@ class ThemeCubit extends Cubit<ThemeState> {
   final WeatherCubit weatherCubit;
   late final StreamSubscription weatherSubscription;
 
-  ThemeCubit({required this.weatherCubit}) : super(ThemeState.initial()){
-    weatherSubscription = weatherCubit.stream.listen((WeatherState weatherState){
+  ThemeCubit({required this.weatherCubit}) : super(ThemeState.initial()) {
+    weatherSubscription =
+        weatherCubit.stream.listen((WeatherState weatherState) {
       print(weatherState);
 
-      if(weatherState.weather.temp > kWarmOrNot){
-        emit(state.copyWith(appTheme: AppTheme.light));
-      }else{
-        emit(state.copyWith(appTheme: AppTheme.dark));
+      if (weatherState.weather.temp > kWarmOrNot) {
+        emit(state.copyWith(appTheme: AppTheme.sun));
+      } else if (weatherState.weather.temp < kSnowOrNot) {
+        emit(state.copyWith(appTheme: AppTheme.snow));
+      } else {
+        emit(state.copyWith(appTheme: AppTheme.cool));
       }
     });
   }
@@ -28,5 +31,4 @@ class ThemeCubit extends Cubit<ThemeState> {
     weatherSubscription.cancel();
     return super.close();
   }
-
 }

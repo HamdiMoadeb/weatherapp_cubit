@@ -39,18 +39,11 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeState>(
-          builder: (context, state) {
-            return MaterialApp(
-              title: 'Flutter Demo',
-              debugShowCheckedModeBanner: false,
-              theme:
-                  state.appTheme == AppTheme.light
-                      ? ThemeData.light()
-                      : ThemeData.dark(),
-              home: HomePage(),
-            );
-          },
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.light(),
+          home: HomePage(),
         ),
       ),
     );

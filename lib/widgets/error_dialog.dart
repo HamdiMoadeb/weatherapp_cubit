@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void errorDialog(BuildContext context, String errorMessage) {
-  if (!Platform.isIOS) {
+  if (Platform.isIOS) {
     showCupertinoDialog(
       context: context,
       barrierDismissible: false,
@@ -39,3 +39,4 @@ void errorDialog(BuildContext context, String errorMessage) {
     );
   }
 }
+

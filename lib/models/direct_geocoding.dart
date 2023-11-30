@@ -19,8 +19,8 @@ class DirectGeocoding extends Equatable {
 
     return DirectGeocoding(
       name: data["name"],
-      lat: data["lat"],
-      lon: data["lon"],
+      lat: double.parse(data["lat"].toString()),
+      lon: double.parse(data["lon"].toString()),
       country: data["country"],
     );
   }

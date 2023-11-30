@@ -1,8 +1,9 @@
 part of 'theme_cubit.dart';
 
 enum AppTheme {
-  light,
-  dark,
+  cool,
+  sun,
+  snow,
 }
 
 class ThemeState extends Equatable{
@@ -10,7 +11,7 @@ class ThemeState extends Equatable{
   final AppTheme appTheme;
 
   ThemeState({
-    this.appTheme = AppTheme.light,
+    this.appTheme = AppTheme.cool,
   });
 
   factory ThemeState.initial(){

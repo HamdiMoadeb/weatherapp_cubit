@@ -35,6 +35,7 @@ class WeatherApiServices {
       }
 
       final responseBody = json.decode(response.body);
+
       if (responseBody.isEmpty) {
         throw WeatherException('Connot get the location of $city');
       }
