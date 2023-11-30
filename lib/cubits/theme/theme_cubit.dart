@@ -16,12 +16,14 @@ class ThemeCubit extends Cubit<ThemeState> {
         weatherCubit.stream.listen((WeatherState weatherState) {
       print(weatherState);
 
-      if (weatherState.weather.temp > kWarmOrNot) {
-        emit(state.copyWith(appTheme: AppTheme.sun));
-      } else if (weatherState.weather.temp < kSnowOrNot) {
-        emit(state.copyWith(appTheme: AppTheme.snow));
-      } else {
-        emit(state.copyWith(appTheme: AppTheme.cool));
+      if(weatherState.status == WeatherStatus.loaded){
+        if (weatherState.weather.temp > kWarmOrNot) {
+          emit(state.copyWith(appTheme: AppTheme.sun));
+        } else if (weatherState.weather.temp < kSnowOrNot) {
+          emit(state.copyWith(appTheme: AppTheme.snow));
+        } else {
+          emit(state.copyWith(appTheme: AppTheme.cool));
+        }
       }
     });
   }

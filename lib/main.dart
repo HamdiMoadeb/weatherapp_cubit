@@ -28,8 +28,9 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<WeatherCubit>(
-              create: (context) => WeatherCubit(
-                  weatherRepository: context.read<WeatherRepository>())),
+            create: (context) => WeatherCubit(
+                weatherRepository: context.read<WeatherRepository>()),
+          ),
           BlocProvider<SettingsCubit>(
             create: (context) => SettingsCubit(),
           ),
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Weather App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData.light(),
           home: HomePage(),

@@ -8,6 +8,7 @@ import 'package:weather_app/cubits/weather/weather_cubit.dart';
 import 'package:weather_app/pages/search_page.dart';
 import 'package:weather_app/pages/settings_page.dart';
 import 'package:weather_app/widgets/error_dialog.dart';
+import 'package:weather_app/widgets/weather_placeholder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -131,10 +132,7 @@ class _HomePageState extends State<HomePage> {
     return Text(
       formattedString,
       style: const TextStyle(
-        fontSize: 24.0,
-        color: Colors.white,
-        fontWeight: FontWeight.w500
-      ),
+          fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.w500),
       textAlign: TextAlign.center,
     );
   }
@@ -148,29 +146,16 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         if (state.status == WeatherStatus.initial) {
-          return Center(
-            child: Text(
-              'No City Selected',
-              style: TextStyle(
-                fontSize: 35.0,
-                color: Colors.white,
-              ),
-            ),
-          );
+          return weatherPlaceholder();
         }
         if (state.status == WeatherStatus.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+              child: CircularProgressIndicator(
+            color: Colors.white,
+          ));
         }
         if (state.status == WeatherStatus.error && state.weather.name.isEmpty) {
-          return const Center(
-            child: Text(
-              'Select a city',
-              style: TextStyle(
-                fontSize: 35.0,
-                color: Colors.white,
-              ),
-            ),
-          );
+          return weatherPlaceholder();
         }
         return ListView(
           children: [
