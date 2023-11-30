@@ -1,16 +1,9 @@
-# weather_app
+# Weather App with Cubit
 
-A new Flutter project.
+Weather app using Bloc/Cubit for state managment and OpenWeatherMap API.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/HamdiMoadeb/weatherapp_cubit/assets/31443689/4c983928-635f-493d-9ec0-93b0ac4cc15e" width="250">
+<img src="https://github.com/HamdiMoadeb/weatherapp_cubit/assets/31443689/f0dc7c2e-205d-4be7-833b-ab128afad75a" width="250">
+<img src="https://github.com/HamdiMoadeb/weatherapp_cubit/assets/31443689/8e686efe-2aae-41cc-bfcd-51ca6a7de055" width="250">
