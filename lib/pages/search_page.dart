@@ -27,8 +27,10 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           'Search',
           style: TextStyle(color: Colors.white),
@@ -44,12 +46,17 @@ class _SearchPageState extends State<SearchPage> {
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: TextFormField(
                 autofocus: true,
-                style: const TextStyle(fontSize: 18.0),
-                decoration: const InputDecoration(
+                style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.white, fontSize: 16),
                   labelText: 'City name',
                   hintText: 'more than 2 characters',
                   prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                      borderSide:  BorderSide(color: Colors.amber),
+                  ),
+                  prefixIconColor: Colors.white,
                 ),
                 validator: (String? input) {
                   if (input == null || input.trim().length < 2) {
@@ -66,7 +73,7 @@ class _SearchPageState extends State<SearchPage> {
             ElevatedButton(
               onPressed: _submit,
               child: const Text(
-                "How's weather?",
+                "Get Weather",
                 style: TextStyle(fontSize: 20.0),
               ),
             ),

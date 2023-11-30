@@ -9,8 +9,12 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text('Settings'),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Settings',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -18,6 +22,9 @@ class SettingsPage extends StatelessWidget {
           title: const Text('Temperature Unit'),
           subtitle: const Text('Celsius/Fahrenheit (Default: Celsius)'),
           trailing: Switch(
+            activeColor: Colors.teal.shade800,
+            inactiveTrackColor: Colors.teal.shade100,
+            activeTrackColor: Colors.teal.shade400,
             value: context.watch<SettingsCubit>().state.tempUnit ==
                 TempUnit.celsius,
             onChanged: (_) {
