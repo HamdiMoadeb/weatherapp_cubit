@@ -1,6 +1,6 @@
 # Weather App with Cubit
 
-Weather app using Bloc/Cubit for state managment and OpenWeatherMap API.
+Weather app using Bloc/Cubit for state management and OpenWeatherMap API.
 
 ## Screenshots
 
