@@ -37,7 +37,7 @@ class WeatherApiServices {
       final responseBody = json.decode(response.body);
 
       if (responseBody.isEmpty) {
-        throw WeatherException('Connot get the location of $city');
+        throw WeatherException('Cannot get the location of $city');
       }
 
       final directGeocoding = DirectGeocoding.fromJson(responseBody);
@@ -48,14 +48,14 @@ class WeatherApiServices {
   }
 
 
-  Future<Weather> getWeather(DirectGeocoding directGeocoding) async {
+  Future<Weather> getWeather(double lat, double lon) async {
     final Uri uri = Uri(
       scheme: 'https',
       host: kApiHost,
       path: '/data/2.5/weather',
       queryParameters: {
-        'lat': '${directGeocoding.lat}',
-        'lon': '${directGeocoding.lon}',
+        'lat': '${lat}',
+        'lon': '${lon}',
         'units': kUnit,
         'appid': dotenv.env['APPID'],
       },

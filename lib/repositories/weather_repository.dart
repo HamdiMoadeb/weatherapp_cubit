@@ -19,7 +19,7 @@ class WeatherRepository {
       print('DirectGeo : $directGeocoding');
 
       final Weather tempWeather = await
-          weatherApiServices.getWeather(directGeocoding);
+          weatherApiServices.getWeather(directGeocoding.lat, directGeocoding.lon);
 
       final Weather weather = tempWeather.copyWith(
         name: directGeocoding.name,

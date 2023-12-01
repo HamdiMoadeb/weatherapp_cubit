@@ -6,6 +6,7 @@ import 'package:weather_app/cubits/settings/settings_cubit.dart';
 import 'package:weather_app/cubits/theme/theme_cubit.dart';
 import 'package:weather_app/cubits/weather/weather_cubit.dart';
 import 'package:weather_app/pages/home_page.dart';
+import 'package:weather_app/repositories/location_repository.dart';
 import 'package:weather_app/repositories/weather_repository.dart';
 import 'package:weather_app/services/weather_api_services.dart';
 
@@ -20,16 +21,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => WeatherRepository(
-          weatherApiServices: WeatherApiServices(
-        httpClient: http.Client(),
-      )),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => WeatherRepository(
+            weatherApiServices: WeatherApiServices(httpClient: http.Client()),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => LocationRepository(
+            weatherApiServices: WeatherApiServices(httpClient: http.Client()),
+          ),
+        )
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<WeatherCubit>(
             create: (context) => WeatherCubit(
-                weatherRepository: context.read<WeatherRepository>()),
+              weatherRepository: context.read<WeatherRepository>(),
+              locationRepository: context.read<LocationRepository>(),
+            ),
           ),
           BlocProvider<SettingsCubit>(
             create: (context) => SettingsCubit(),

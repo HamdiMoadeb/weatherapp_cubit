@@ -21,6 +21,13 @@ class _HomePageState extends State<HomePage> {
   String? city;
 
   @override
+  void initState() {
+    super.initState();
+
+    context.read<WeatherCubit>().fetchWeatherUsingLocation();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -51,6 +58,16 @@ class _HomePageState extends State<HomePage> {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
+              leading: IconButton(
+                onPressed: () {
+                  context.read<WeatherCubit>().fetchWeatherUsingLocation();
+                },
+                icon: Icon(
+                  Icons.location_on_rounded,
+                  size: 32,
+                  color: Colors.white,
+                ),
+              ),
               actions: [
                 IconButton(
                   onPressed: () async {
